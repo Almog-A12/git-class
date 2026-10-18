@@ -92,17 +92,23 @@ git push -u origin add-your-name
 The first time, GitHub asks you to log in:
 
 - **Windows:** a browser window opens - log in and approve.
-- **Mac:** Git asks for a username and password - but GitHub does **not** accept
+- **Mac or Linux:** Git asks for a username and password - but GitHub does **not** accept
   your account password. Do this once:
 
-  **Option A - if you have Homebrew** (a browser login opens, like on Windows):
+  **Option A - Mac with Homebrew** (a browser login opens, like on Windows):
 
   ```
   brew install --cask git-credential-manager
   git push -u origin add-your-name
   ```
 
-  **Option B - a token instead of a password** (if `brew` is not found):
+  **Option B - a token instead of a password** (Linux, or Mac without `brew`):
+
+  0. **Linux only** - so Git remembers your token for a day instead of asking every push:
+
+     ```
+     git config --global credential.helper "cache --timeout=86400"
+     ```
 
   1. On GitHub: your avatar (top right) → **Settings** → **Developer settings**
      (bottom of the left menu) → **Personal access tokens** → **Tokens (classic)**
@@ -113,7 +119,7 @@ The first time, GitHub asks you to log in:
      - **Username:** your GitHub username (not your email)
      - **Password:** paste the token (nothing shows on screen while you paste - that is normal)
 
-  Your Mac remembers it, so you will not be asked again.
+  A Mac remembers it for good; Linux remembers it for a day (step 0).
   Treat the token like a password - never share it or post it in the class chat.
 
 ## Step 6 - Open a Pull Request
